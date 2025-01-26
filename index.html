@@ -55,8 +55,204 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
+	<style>
+		html {
+		scroll-behavior: smooth;
+		}
+
+		#fh5co-hero .overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.4); /* Black overlay with 50% opacity */
+		z-index: 1;
+	}
+
+	#fh5co-hero .slider-text {
+		position: relative;
+		z-index: 2; /* Ensure the text appears above the overlay */
+	}
+
+	#fh5co-hero {
+		background-attachment: fixed;
+		background-position: center;
+		background-size: cover;
+		animation: fadeIn 2s;
+	}
+
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Hero Section */
+        #fh5co-hero {
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            animation: fadeIn 2s;
+        }
+
+        .js-fullheight {
+            height: 100vh;
+        }
+
+        .flexslider {
+            position: relative;
+            z-index: 1;
+        }
+
+        .slides li {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .slider-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        p {
+            color: #f9f9f9;
+            font-size: 1.5rem;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        /* Callback Button */
+        #callback-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #callback-button {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+
+        #callback-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        #callback-form h3 {
+            margin-bottom: 15px;
+        }
+
+        #callback-form input[type="text"],
+        #callback-form input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #callback-form .form-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #callback-form .form-btn:hover {
+            background-color: #218838;
+        }
+
+        #form-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+      
+
+        /* Emergency Banner */
+        .emergency-banner {
+            background-color: #ff0000;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .emergency-banner p {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+    </style>
+	
+
 	</head>
 	<body>
+		<!-- Callback Button -->
+		<div id="callback-button">
+			<a class="btn" onclick="showForm()">Request a Callback</a>
+		</div>
+
+		<div id="form-overlay"></div>
+
+		<div id="callback-form">
+			<h3>Request a Callback</h3>
+			<input type="text" id="name" placeholder="Name" required>
+			<input type="text" id="surname" placeholder="Surname" required>
+			<input type="tel" id="cellphone" placeholder="Cellphone Number" required>
+			<button class="form-btn" onclick="submitForm()">Submit</button>
+		</div>
+
 		<div id="fh5co-wrapper">
 		<div id="fh5co-page">
 
@@ -84,81 +280,80 @@
 		<aside id="fh5co-hero" class="js-fullheight">
 			<div class="flexslider js-fullheight">
 				<ul class="slides">
-			   	<li style="background-image: url(images/img_bg_1.jpg);">
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-4 col-md-offset-4 col-md-pull-4 js-fullheight slider-text">
-				   				<div class="slider-text-inner">
-				   					<div class="desc">
-				   						<span class="status">Sale</span>
-				   						<h1>New House in Section F, Giyani</h1>
-											<h2 class="price">R80,000.00</h2>
-											<p>Get a 5 room house built on new land</p>
-											<p class="details">
-												<span>250 ft sq</span>
-												<span>2 Bedrooms</span>
-												<span>1 Kitchen</span>
-												<span>1 Bathrooms</span>
-												<span>1 Garage</span>
-											</p>
-											<p><a class="btn btn-primary btn-lg" href="#">Learn More</a></p>
-				   					</div>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			   	<li style="background-image: url(images/img_bg_2.jpg);">
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-4 col-md-offset-4 col-md-pull-4 js-fullheight slider-text">
-				   				<div class="slider-text-inner">
-				   					<div class="desc">
-				   						<span class="status">Rent</span>
-				   						<h1>New House in Risinga View, Giyani</h1>
-											<h2 class="price">R60,000.00</h2>
-											<p>Get a 4.5 room house built on new land</p>
-											<p class="details">
-												<span>250 ft sq</span>
-												<span>2 Bedrooms</span>
-												<span>1 Kitchen</span>
-												<span>1 Bathrooms</span>
-												<span>1 Garage</span>
-											</p>
-											<p><a class="btn btn-primary btn-lg" href="#">Learn More</a></p>
-				   					</div>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			   	<li style="background-image: url(images/img_bg_3.jpg);">
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-4 col-md-offset-4 col-md-pull-4 js-fullheight slider-text">
-				   				<div class="slider-text-inner">
-				   					<div class="desc">
-				   						<span class="status">Sale</span>
-										<h1>New House in Section F, Giyani</h1>
-											<h2 class="price">R80,000.00</h2>
-											<p>Get a 5 room house built on new land</p>
-											<p class="details">
-												<span>250 ft sq</span>
-												<span>2 Bedrooms</span>
-												<span>1 Kitchen</span>
-												<span>1 Bathrooms</span>
-												<span>1 Garage</span>
-											</p>
-											<p><a class="btn btn-primary btn-lg" href="#">Learn More</a></p>
-				   					</div>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>		   	
-			  	</ul>
-		  	</div>
+					<li style="background-image: url(images/men-maintaining3.webp);">
+						<div class="overlay"></div>
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-12 text-center js-fullheight slider-text">
+									<h1 style="color: #fff; font-size: 3rem; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);">
+										Building Your Dreams, Restoring Your Peace of Mind
+									</h1>
+									<p style="color: #f9f9f9; font-size: 1.5rem;">
+										From leaks to luxury, we've got you covered.
+									</p>
+									<a href="#fh5co-features" class="btn btn-primary" style="margin-top: 20px; padding: 10px 20px;">
+										Explore Our Services
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li style="background-image: url(images/men-painting.webp); background-size: cover; background-position: center;">
+						<div class="overlay" style="background-color: rgba(0, 0, 0, 0.5); position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+						<div class="container-fluid">
+							<div class="row">
+								<section id="services" class="services-section">
+									<div class="container" style="position: relative; background: rgba(255, 255, 255, 0.9); border-radius: 10px; padding: 20px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);">
+										<h2 class="text-center" style="margin-bottom: 30px; color: #333;">Our Services</h2>
+										<div class="row">
+											<div class="col-md-4 text-center">
+												<div style="position: relative; padding: 10px;">
+													<img src="images/Building-Construction4.jpg" alt="Building Construction" style="width: 150px; height: 150px; object-fit: contain; margin-bottom: 50px;">
+													<div style="background-color: rgba(0, 0, 0, 0.7); padding: 10px; border-radius: 5px; position: absolute; bottom: 0; width: 100%;">
+														<h4 style="color: white; margin: 0;">Building & Construction</h4>
+														<p style="color: white; font-size: 14px; margin: 0;">Expert construction solutions for homes, offices, and more.</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4 text-center">
+												<div style="position: relative; padding: 10px;">
+													<img src="images/roofing.jpeg" alt="Roofing" style="width: 150px; height: 150px; object-fit: contain; margin-bottom: 50px;">
+													<div style="background-color: rgba(0, 0, 0, 0.7); padding: 10px; border-radius: 5px; position: absolute; bottom: 0; width: 100%;">
+														<h4 style="color: white; margin: 0;">Roofing Specialists</h4>
+														<p style="color: white; font-size: 14px; margin: 0;">Professional roofing services to protect your property.</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4 text-center">
+												<div style="position: relative; padding: 10px;">
+													<img src="images/painting.jpg" alt="Painting" style="width: 150px; height: 150px; object-fit: contain; margin-bottom: 50px;">
+													<div style="background-color: rgba(0, 0, 0, 0.7); padding: 10px; border-radius: 5px; position: absolute; bottom: 0; width: 100%;">
+														<h4 style="color: white; margin: 0;">Painting & Renovations</h4>
+														<p style="color: white; font-size: 14px; margin: 0;">Revive your space with expert painting and renovation.</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						</div>
+					</li>
+					
+					<li style="background-image: url(images/men-maintaining.webp);">
+						<div class="overlay"></div>
+						<div class="container-fluid">
+							<div class="row">
+								<div class="emergency-banner text-center" style="background-color: #ff0000; color: #fff; padding: 20px;">
+									<p style="margin: 0; font-size: 2rem;">Building emergency? Call us now at <strong>+27 60 334 1133 / +27 79 084 8609</strong></p>
+								</div>
+							</div>
+						</div>
+					</li>           
+				</ul>
+			</div>
 		</aside>
+		
 
 		<!--div id="fh5co-search-map">
 			<div class="search-property">
@@ -513,16 +708,16 @@
 				</div>
 				<div class="row">
 					<div class="col-md-4 animate-box">
-						<a href="#" class="fh5co-property" style="background-image: url(images/property-1.jpg);">
+						<a href="#fh5co-popular-properties" class="fh5co-property" onclick="showForm('High Pressure Cleaning Special')" style="background-image: url(images/high-pressure-clean.jpg);">
 							<span class="status">Sale</span>
 							<div class="prop-details">
 								<span class="price">R2,200</span>
-								<h3>High Pressure Cleaning special</h3>
+								<h3>High Pressure Cleaning Special</h3>
 							</div>
 						</a>
 					</div>
 					<div class="col-md-4 animate-box">
-						<a href="#" class="fh5co-property" style="background-image: url(images/property-2.jpg);">
+						<a href="#fh5co-popular-properties" class="fh5co-property" onclick="showForm('Home Paving Special')" style="background-image: url(images/home-paving.jpg);">
 							<span class="status">Sale</span>
 							<div class="prop-details">
 								<span class="price">R3,700</span>
@@ -531,7 +726,7 @@
 						</a>
 					</div>
 					<div class="col-md-4 animate-box">
-						<a href="#" class="fh5co-property" style="background-image: url(images/property-3.jpg);">
+						<a href="#fh5co-popular-properties" class="fh5co-property" onclick="showForm('Walls and Roofs Coatings')" style="background-image: url(images/roof-coatings.jpg);">
 							<span class="status">Sale</span>
 							<div class="prop-details">
 								<span class="price">R2,300</span>
@@ -542,8 +737,31 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- Hidden Form -->
+		<div id="popupForm" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000;">
+			<h3>Request Service</h3>
+			<form id="serviceForm" onsubmit="handleFormSubmit(event)">
+				<div class="form-group">
+					<input type="text" id="name" placeholder="Name and Surname" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<input type="text" id="cellphone" placeholder="Cellphone" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<input type="text" id="service" class="form-control" readonly>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+		
+		<!-- Overlay -->
+		<div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;" onclick="hideForm()"></div>
 
-		<div id="fh5co-testimonial" style="background-image:url(images/img_bg_2.jpg);">
+
+		<div id="fh5co-testimonial" style="background-image:url(images/man-maintanance-african.jpg);">
 			<div class="container">
 				<div class="row animate-box">
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
@@ -555,32 +773,28 @@
 						<div class="box-testimony animate-box">
 							<blockquote>
 								<span class="quote"><span><i class="icon-quotes-right"></i></span></span>
-								<p>&ldquo;Here is what the client said.&rdquo;</p>
+								<p style="color: #000;">&ldquo;Mahachi Projects transformed our dream home into reality. Their attention to detail and professionalism were outstanding. Every step of the way, they kept us informed and ensured the project was completed on time. We couldn’t be happier with the results!&rdquo;</p>
 							</blockquote>
-							<p class="author">Client Name</p>
+							<p class="author">Lungile Moyo, Johannesburg</p>
 						</div>
-						
 					</div>
 					<div class="col-md-4">
 						<div class="box-testimony animate-box">
 							<blockquote>
 								<span class="quote"><span><i class="icon-quotes-right"></i></span></span>
-								<p>&ldquo;Here is what the client said.&rdquo;</p>
+								<p style="color: #000;">&ldquo;The painting and renovation work done by Mahachi Projects completely transformed our office space. They worked within our budget and exceeded expectations with their creativity and skill. The final result is stunning!&rdquo;</p>
 							</blockquote>
-							<p class="author">Client Name</p>
+							<p class="author">David Nkosi, Pretoria</p>
 						</div>
-						
-						
 					</div>
 					<div class="col-md-4">
 						<div class="box-testimony animate-box">
 							<blockquote>
 								<span class="quote"><span><i class="icon-quotes-right"></i></span></span>
-								<p>&ldquo;Here is what the client said.&rdquo;</p>
+								<p style="color: #000;">&ldquo;Finding a trustworthy contractor can be challenging, but Mahachi Projects proved to be reliable and dedicated. They stuck to their timelines, provided regular updates, and delivered top-notch results. We will definitely hire them again for future projects.&rdquo;</p>
 							</blockquote>
-							<p class="author">Client Name</p>
+							<p class="author">Kevin Pietersen, Johannesburg</p>
 						</div>
-						
 					</div>
 				</div>
 			</div>
@@ -714,7 +928,7 @@
 		</div-->
 
 
-		<div id="fh5co-about" class="fh5co-agent">
+		<div id="fh5co-about" class="fh5co-agent" style="background-image:url(images/house-maintance.jpg);">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
@@ -725,7 +939,7 @@
 				<div class="row">
 					<div class="col-sm-3 text-center animate-box" data-animate-effect="fadeIn">
 						<div class="fh5co-staff">
-							<img class="img-responsive" src="images/user-3.jpg" alt="Brenner Nkosi">
+							<img class="img-responsive" src="images/Brenner.jpeg" alt="Brenner Nkosi">
 							<h3>Brenner Nkosi</h3>
 							<p>Chief Construction Officer</p>
 							
@@ -733,7 +947,7 @@
 					</div>
 					<div class="col-sm-3 text-center animate-box" data-animate-effect="fadeIn">
 						<div class="fh5co-staff">
-							<img class="img-responsive" src="images/user-3.jpg" alt="Abel Nkosi">
+							<img class="img-responsive" src="images/Abe.jpeg" alt="Abel Nkosi">
 							<h3>Abe Nkosi</h3>
 							<p>Project Manager</p>
 							
@@ -764,7 +978,7 @@
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
 						<h3>Vacancies</h3>
-						<p>None. For service agreement contracts, please enquire.</p>
+						<p style="color: #4b4b4b;"><strong>None. For service agreement contracts, please enquire.</strong></p>
 					</div>
 				</div>
 				<!--div class="row">
@@ -879,22 +1093,22 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Name">
+										<input type="text" class="form-control" id="name" placeholder="Name">
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Email">
+										<input type="text" class="form-control" id="email" placeholder="Email">
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<textarea name="" class="form-control" id="" cols="30" rows="7" placeholder="Message"></textarea>
+										<textarea class="form-control" id="message" cols="30" rows="7" placeholder="Message"></textarea>
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<input type="submit" value="Send Message" class="btn btn-primary">
+										<input type="submit" value="Send Message" class="btn btn-primary" onclick="handleSubmit()">
 									</div>
 								</div>
 							</div>
@@ -902,7 +1116,18 @@
 					</div>
 				</div>
 			</div>
-			<div class="half-bg" style="background-image: url(images/cover_bg_2.jpg);"></div>
+			<div class="map-container">
+				<h2 class="section-title">Our Location</h2>
+				<iframe 
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14355.195263073062!2d27.86693415!3d-26.0375949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9519c2b9ed7d69%3A0x8f5bc6a1a30b46b7!2s103%20Pongolo%20St%2C%20Zandspruit%2C%20Roodepoort%2C%201269!5e0!3m2!1sen!2sza!4v1694760532346!5m2!1sen!2sza" 
+					width="600" 
+					height="700" 
+					style="border:0;" 
+					allowfullscreen="" 
+					loading="lazy" 
+					referrerpolicy="no-referrer-when-downgrade">
+				</iframe>
+			  </div>
 		</div>
 		<footer>
 			<div id="footer">
@@ -917,10 +1142,10 @@
 							<h3 class="section-title">Navigation</h3>
 							<ul>
 								<li><a href="#">Home</a></li>
-								<li><a href="#">Sevices</a></li>
-								<li><a href="#">Team</a></li>
-								<li><a href="#">Gallery</a></li>
-								<li><a href="#">Contact</a></li>
+								<li><a href="#fh5co-features">Sevices</a></li>
+								<li><a href="#fh5co-popular-properties">Sales</a></li>
+								<li><a href="#fh5co-about">Team</a></li>
+								<li><a href="#fh5co-contact">Contact</a></li>
 							</ul>
 						</div>
 
@@ -928,9 +1153,9 @@
 							<h3 class="section-title">Contact Us</h3>
 							<ul>
 								<li><i class="icon-phone2"></i>+27 79 084 8609</li>
-								<li><i class="icon-phone2"></i>+27 60 334 1133</li>
+								<li><a href="https://wa.me/+27603341133" target="blank"><i class="icon-whatsapp"></i></a>+27 60 334 1133</li>
 								<li><i class="icon-mail"></i><a href="mailto:admin@mahachiprojects.co.za">admin@mahachiprojects.co.za</a></li>
-								<li><i class="icon-globe2"></i><a href="#">www.mahachiprojects.co.za</a></li>
+								<li><i class="icon-globe2"></i><a href="https://mahachiprojects.co.za/">www.mahachiprojects.co.za</a></li>
 							</ul>
 						</div>
 						<div class="col-md-3">
@@ -940,7 +1165,7 @@
 									<div class="col-md-12 col-md-offset-0">
 							<!--p>.</p-->
 							<ul class="contact-info">
-								<li><i class="icon-location-pin"></i>103A Zandspruit. Honeydew. 2040</li>
+								<li><i class="icon-location-pin"></i><a href="https://www.google.com/maps/search/103A+Zandspruit.+Honeydew.+2040/@-26.064544,27.9006715,15z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDEwMi4wIKXMDSoASAFQAw%3D%3D">103A Zandspruit. Honeydew. 2040</a></li>
 								
 							</ul>
 						</div>
@@ -951,11 +1176,12 @@
 					<div class="row">
 						<div class="col-md-12">
 							<p class="fh5co-social-icons">
-								<a href="https://wa.me/27603341133" target="blank"><i class="icon-whatsapp"></i></a>
-								<!--a href="#"><i class="icon-facebook2"></i></a>
-								<a href="#"><i class="icon-instagram"></i></a-->
+								
 							</p>
-							<p>Copyright 2022 Mahachi Projects. All Rights Reserved. <br>Made with <i class="icon-heart3"></i> by <a href="www.gamechangersites.co.za" target="blank">Game Changer Sites</a></p>
+							<p>Copyright 2022 Mahachi Projects. All Rights Reserved. <br>Made with <i class="icon-heart3"></i> by <a href="www.gamechangersites.co.za" target="blank">Game Changer Sites</a><br>
+								<span class="icon" style="display: inline-block; margin-right: 8px; vertical-align: middle;">
+								&#10003;</span><strong>100% Black Owned</strong>
+							</p>
 						</div>
 					</div>
 				</div>
@@ -992,6 +1218,96 @@
 	<script src="js/classie.js"></script>
 	<script src="js/selectFx.js"></script>
 
+	<script>
+		// Function to show the form
+		function showForm() {
+			document.getElementById('callback-form').style.display = 'block';
+			document.getElementById('form-overlay').style.display = 'block';
+		}
+	
+		// Function to hide the form and overlay
+		function hideForm() {
+			document.getElementById('callback-form').style.display = 'none';
+			document.getElementById('form-overlay').style.display = 'none';
+		}
+	
+		// Function to handle form submission
+		function submitForm() {
+			const name = document.getElementById('name').value;
+			const surname = document.getElementById('surname').value;
+			const cellphone = document.getElementById('cellphone').value;
+	
+			if (name && surname && cellphone) {
+				alert("We will be in touch soon, thanks.");
+				hideForm(); // Hide the form after submission
+			} else {
+				alert("Please fill out all fields.");
+			}
+		}
+	
+		// Close form when clicking outside it
+		document.getElementById('form-overlay').addEventListener('click', hideForm);
+	</script>
+
+
+	<!-- <div id="map"></div>
+
+	<script>
+	var map;
+	function initMap() {
+		map = new google.maps.Map(document.getElementById('map'), {
+		center: {lat: -34.397, lng: 150.644},
+		zoom: 8
+		});
+	}
+	</script>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnoX8LSgSg5-pRiF5_IzZ313VsNZzuo-4&callback=initMap"
+	async defer></script> -->
+
+	<script>
+    function handleSubmit() {
+		
+        // Display the popup message
+        alert("Thank you for reaching us, we will be in touch.");
+        
+        // Reset the form fields
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("message").value = "";
+
+		 
+   	 }
+	</script>
+
+	<script>
+		// Show the form
+		function showForm(serviceName) {
+			document.getElementById("popupForm").style.display = "block";
+			document.getElementById("overlay").style.display = "block";
+			document.getElementById("service").value = serviceName; // Set the service name
+		}
+
+		// Hide the form
+		function hideForm() {
+			document.getElementById("popupForm").style.display = "none";
+			document.getElementById("overlay").style.display = "none";
+		}
+
+		// Handle form submission
+		function handleFormSubmit(event) {
+			event.preventDefault(); // Prevent default form submission
+
+			// Show the popup message
+			alert("Our team member will be in touch, thank you.");
+
+			// Reset the form
+			document.getElementById("serviceForm").reset();
+
+			// Hide the form and overlay
+			hideForm();
+		}
+	</script>
 	
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
